@@ -1,3 +1,15 @@
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+app.use(cors());
+
+const port = 3000;
+
+app.listen(port, function () {
+    console.log(`server up and running ... listening to port ${port}`);
+});
+
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
