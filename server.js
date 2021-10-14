@@ -27,11 +27,10 @@ app.use(bodyParser.json());
 // Initialize the main project folder
 app.use(express.static("website"));
 
-
-app.get('/addData', function (req, res) {
-    console.log(projectData);
-    res.send(projectData);
-});
+// app.get("/addData", function (req, res) {
+//   console.log(projectData);
+//   res.send(projectData);
+// });
 
 // same url in postData async fn
 app.post("/addData", function (req, res) {
@@ -40,5 +39,7 @@ app.post("/addData", function (req, res) {
   projectData.userResponse = req.body.feelings;
   res.send(projectData);
 });
-
+app.get("/all", function (req, res) {
+  res.send(projectData);
+});
 // Setup Server

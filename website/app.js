@@ -16,7 +16,18 @@ function generateFn() {
   } else {
     const apiKey = "d9e02d02ab4a0ca79ffc8dcde9a86162";
     const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue}&appid=${apiKey}`;
-    getData(url);
+    getData(url)
+      .then(function (data) {
+          console.log("data here "+data);
+        postData("/addData", {
+          temp: data.main.temp,
+          date: newDate,
+          feelings: feelings.value,
+        });
+      })
+      .then(function () {
+        updateUI();
+      });
   }
 }
 
@@ -26,7 +37,7 @@ const getData = async function (u) {
   const res = await fetch(u);
   try {
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log("error: " + error);
@@ -47,5 +58,18 @@ const postData = async (url = "/addData", data = {}) => {
     return newData;
   } catch (error) {
     console.log("error" + error);
+  }
+};
+
+const updateUI = async () => {
+  const request = await fetch("/all");
+  try {
+    const allData = await request.json();
+    console.log("all data "+allData);
+    document.getElementById("date").innerHTML = allData[0].date;
+    document.getElementById("temp").innerHTML = allData[0].temp;
+    document.getElementById("content").innerHTML = allData[0].userResponse;
+  } catch (error) {
+    console.log("error"+ error);
   }
 };
