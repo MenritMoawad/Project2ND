@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const bodyParser = require("body-parser");
+const cors = require("cors");
 app.use(cors());
 
 const port = 3000;
 
 app.listen(port, function () {
-    console.log(`server up and running ... listening to port ${port}`);
+  console.log(`server up and running ... listening to port ${port}`);
 });
 
 // Setup empty JS object to act as endpoint for all routes
@@ -25,8 +25,20 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static("website"));
 
 
+app.get('/addData', function (req, res) {
+    console.log(projectData);
+    res.send(projectData);
+});
+
+// same url in postData async fn
+app.post("/addData", function (req, res) {
+  projectData.temp = req.body.temp;
+  projectData.date = req.body.date;
+  projectData.userResponse = req.body.feelings;
+  res.send(projectData);
+});
 
 // Setup Server
