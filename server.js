@@ -37,11 +37,10 @@ app.post("/addData", function (req, res) {
   projectData.temp = req.body.temp;
   projectData.date = req.body.date;
   projectData.userResponse = req.body.feelings;
-  console.log("project data object "+projectData.temp);
   res.send(projectData);
 });
 app.get("/all", function (req, res) {
-    // working correctly using the route /all after local host. Data is passed correctly
+    //  Data is passed correctly
   res.send(projectData);
 });
 // Setup Server

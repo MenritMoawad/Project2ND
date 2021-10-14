@@ -9,7 +9,6 @@ const btn = document.querySelector("#generate");
 btn.addEventListener("click", generateFn);
 
 function generateFn() {
-  // console.log("here");
   const zipValue = document.querySelector("#zip").value;
   if (zipValue.length === 0) {
     alert("Please enter zip code");
@@ -18,7 +17,6 @@ function generateFn() {
     const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue}&appid=${apiKey}`;
     getData(url)
       .then(function (data) {
-          console.log("data here "+data);
         postData("/addData", {
           temp: data.main.temp,
           date: newDate,
@@ -37,7 +35,6 @@ const getData = async function (u) {
   const res = await fetch(u);
   try {
     const data = await res.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.log("error: " + error);
@@ -65,7 +62,6 @@ const updateUI = async () => {
   const request = await fetch("/all");
   try {
     const allData = await request.json();
-    console.log("all data "+allData.temp);
     document.getElementById("date").innerHTML = allData.date;
     document.getElementById("temp").innerHTML = allData.temp;
     document.getElementById("content").innerHTML = allData.userResponse;

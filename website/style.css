@@ -8,7 +8,7 @@ body{
     grid-auto-rows: minmax(150px, auto);
     /* grid-template-columns:  */
     height:120vh;
-    background: #f23557;
+    background:darkcyan;
     color: #f0d43a;
     justify-content: center;
     grid-gap: 1em;
@@ -41,7 +41,7 @@ body{
 }
 
 .headline {
-
+    
 }
 .title{
 
