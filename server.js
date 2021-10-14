@@ -40,6 +40,7 @@ app.post("/addData", function (req, res) {
   res.send(projectData);
 });
 app.get("/all", function (req, res) {
+    // working correctly using the route /all after local host. Data is passed correctly
   res.send(projectData);
 });
 // Setup Server
