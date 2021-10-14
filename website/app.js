@@ -3,7 +3,7 @@
 // const url = "api.openweathermap.org/data/2.5/weather?zip={zip code}&appid={API key}"
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+let newDate = d.getMonth()+1 + "." + d.getDate() + "." + d.getFullYear();
 
 const btn = document.querySelector("#generate");
 btn.addEventListener("click", generateFn);
@@ -14,7 +14,7 @@ function generateFn() {
     alert("Please enter zip code");
   } else {
     const apiKey = "d9e02d02ab4a0ca79ffc8dcde9a86162";
-    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue}&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue}&appid=${apiKey}&units=metric`;
     getData(url)
       .then(function (data) {
         postData("/addData", {
